@@ -27,6 +27,7 @@ require('lazy').setup({
   require 'plugins.autocompletion',
   require 'plugins.none-ls',
   require 'plugins.lualine',
+  require 'plugins.floaterm',
   require 'plugins.bufferline',
   require 'plugins.neo-tree',
   require 'plugins.alpha',
