@@ -41,33 +41,7 @@ require('lazy').setup({
   require 'plugins.harpoon',
   require 'plugins.emoji',
   require 'plugins.noice',
-  require 'plugins.colorbuddy',
-  require 'plugins.nord',
-  require 'plugins.vision',
-  require 'plugins.catppuccin',
-  require 'plugins.kanagawa',
-  require 'plugins.onedark',
-  require 'plugins.eldritch',
-  require 'plugins.tokyodark',
-  require 'plugins.aurora',
-  require 'plugins.adwaita',
-  require 'plugins.ayu',
-  require 'plugins.vividchalk',
-  require 'plugins.flow',
-  require 'plugins.vscode',
-  require 'plugins.gruvbox',
-  require 'plugins.tokyonight',
-  require 'plugins.neosolarised',
-  require 'plugins.bluloco',
-  require 'plugins.dracula',
-  require 'plugins.everforest',
-  require 'plugins.rose-pine',
-  require 'plugins.github-theme',
-  require 'plugins.moon-fly-color',
-  require 'plugins.modus-themes',
-  require 'plugins.cobalt2',
-  require 'plugins.sonokai',
-  require 'plugins.gruvbox-material',
+  require 'plugins.themes',
   require 'plugins.themery',
 }, {
   ui = {
@@ -108,7 +82,7 @@ local session_file = '.session.vim'
 -- Check if the session file exists in the current directory
 if file_exists(session_file) then
   -- Source the session file
-  vim.cmd('source ' .. '.session.vim')
+  vim.cmd('source ' .. session_file)
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
