@@ -20,6 +20,9 @@ vim.keymap.set('n', '<Esc>', ':noh<CR>', opts)
 -- save file
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
 
+-- select all
+vim.keymap.set('n', '<C-a>', 'gg<S-v>G', opts)
+
 -- save file without auto-formatting
 vim.keymap.set('n', '<leader>sn', '<cmd>noautocmd w <CR>', opts)
 

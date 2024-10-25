@@ -30,6 +30,27 @@ return { -- Autocompletion
   config = function()
     local cmp = require 'cmp'
     require('luasnip.loaders.from_vscode').lazy_load()
+    local system_name
+    if vim.fn.has 'win32' == 1 then
+      system_name = 'Windows'
+    elseif vim.fn.has 'macunix' == 1 then
+      system_name = 'Mac'
+    elseif vim.fn.has 'unix' == 1 then
+      system_name = 'Linux'
+    else
+      system_name = 'Unknown'
+    end
+
+    if system_name == 'Windows' then
+      require('luasnip.loaders.from_lua').load { paths = '~/AppData/Local/nvim/luasnippets/' }
+    elseif system_name == 'Linux' then
+      require('luasnip.loaders.from_lua').load { paths = '~/.config/nvim/luasnippets/' }
+    elseif system_name == 'Mac' then
+      require('luasnip.loaders.from_lua').load { paths = 'Users/username/.config/nvim/luasnippets/' }
+    else
+      require('luasnip.loaders.from_lua').load { paths = vim.fn.stdpath 'config' }
+    end
+
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
 
@@ -73,10 +94,10 @@ return { -- Autocompletion
       --     documentation = cmp.config.window.bordered(),
       -- },
       mapping = cmp.mapping.preset.insert {
-        ['<C-j>'] = cmp.mapping.select_next_item(),       -- Select the [n]ext item
-        ['<C-k>'] = cmp.mapping.select_prev_item(),       -- Select the [p]revious item
+        ['<C-j>'] = cmp.mapping.select_next_item(), -- Select the [n]ext item
+        ['<C-k>'] = cmp.mapping.select_prev_item(), -- Select the [p]revious item
         ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept the completion with Enter.
-        ['<C-c>'] = cmp.mapping.complete {},              -- Manually trigger a completion from nvim-cmp.
+        ['<C-c>'] = cmp.mapping.complete {}, -- Manually trigger a completion from nvim-cmp.
 
         -- Think of <c-l> as moving to the right of your snippet expansion.
         --  So if you have a snippet that's like:
