@@ -6,9 +6,9 @@ return {
 
     -- configure and set on startup
     config = function()
-      vim.g.adwaita_darker = true             -- for darker version
+      vim.g.adwaita_darker = true -- for darker version
       vim.g.adwaita_disable_cursorline = true -- to disable cursorline
-      vim.g.adwaita_transparent = false       -- makes the background transparent
+      vim.g.adwaita_transparent = false -- makes the background transparent
       vim.cmd('colorscheme adwaita')
     end,
   },
@@ -35,7 +35,7 @@ return {
       -- your optional config goes here, see below.
     end,
   },
-  { 'catppuccin/nvim',  name = 'catppuccin', priority = 1000 },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   {
     'lalitmee/cobalt2.nvim',
     dependencies = { 'tjdevries/colorbuddy.nvim', tag = 'v1.0.0' },
@@ -60,32 +60,32 @@ return {
       })
     end,
   },
-  { 'projekt0n/github-nvim-theme',  name = 'github-theme' },
+  { 'projekt0n/github-nvim-theme', name = 'github-theme' },
   { 'sainnhe/gruvbox-material' },
   { 'ellisonleao/gruvbox.nvim' },
   { 'rebelot/kanagawa.nvim' },
   { 'miikanissi/modus-themes.nvim', priority = 1000 },
-  { 'bluz71/vim-moonfly-colors',    name = 'moonfly',     lazy = false, priority = 1000 },
+  { 'bluz71/vim-moonfly-colors', name = 'moonfly', lazy = false, priority = 1000 },
   {
     'Tsuzat/NeoSolarized.nvim',
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
   },
   { 'bluz71/vim-nightfly-colors', name = 'nightfly', lazy = false, priority = 1000 },
   {
     'shaunsingh/nord.nvim',
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- Example config in lua
-      vim.g.nord_contrast = true                   -- Make sidebars and popup menus like nvim-tree and telescope have a different background
-      vim.g.nord_borders = false                   -- Enable the border between verticaly split windows visable
-      vim.g.nord_disable_background = true         -- Disable the setting of background color so that NeoVim can use your terminal background
-      vim.g.set_cursorline_transparent = false     -- Set the cursorline transparent/visible
-      vim.g.nord_italic = false                    -- enables/disables italics
+      vim.g.nord_contrast = true -- Make sidebars and popup menus like nvim-tree and telescope have a different background
+      vim.g.nord_borders = false -- Enable the border between verticaly split windows visable
+      vim.g.nord_disable_background = true -- Disable the setting of background color so that NeoVim can use your terminal background
+      vim.g.set_cursorline_transparent = false -- Set the cursorline transparent/visible
+      vim.g.nord_italic = false -- enables/disables italics
       vim.g.nord_enable_sidebar_background = false -- Re-enables the background of the sidebar if you disabled the background of everything
-      vim.g.nord_uniform_diff_background = true    -- enables/disables colorful backgrounds when used in diff mode
-      vim.g.nord_bold = false                      -- enables/disables bold
+      vim.g.nord_uniform_diff_background = true -- enables/disables colorful backgrounds when used in diff mode
+      vim.g.nord_bold = false -- enables/disables bold
 
       -- Load the colorscheme
       require('nord').set()
@@ -121,14 +121,14 @@ return {
 
       local config = {
         -- Main options --
-        style = 'dark',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-        transparent = true,           -- Show/hide background
-        term_colors = true,           -- Change terminal color as per the selected theme style
-        ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
+        style = 'dark', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+        transparent = true, -- Show/hide background
+        term_colors = true, -- Change terminal color as per the selected theme style
+        ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
         cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
         -- toggle theme style ---
-        toggle_style_key = '<leader>th',                                                     -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+        toggle_style_key = '<leader>th', -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
         toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light' }, -- List of styles to toggle between
 
         -- Change code style ---
@@ -150,13 +150,13 @@ return {
         -- Custom Highlights --
         colors = {
           -- purple = '#56b6c2',
-        },               -- Override default colors
+        }, -- Override default colors
         highlights = {}, -- Override highlight groups
 
         -- Plugins Config --
         diagnostics = {
-          darker = true,     -- darker colors for diagnostic
-          undercurl = true,  -- use undercurl instead of underline for diagnostics
+          darker = true, -- darker colors for diagnostic
+          undercurl = true, -- use undercurl instead of underline for diagnostics
           background = true, -- use background color for virtual text
         },
       }
@@ -214,7 +214,7 @@ return {
   --	diff_change = "#1c3448",
   --	diff_text = "#2c5372",
 
-  { 'rose-pine/neovim',           name = 'rose-pine' },
+  { 'rose-pine/neovim', name = 'rose-pine' },
   {
     'sainnhe/sonokai',
     priority = 1000,
@@ -245,4 +245,13 @@ return {
   { 'tpope/vim-vividchalk' },
   { 'askfiy/visual_studio_code' },
   { 'adisen99/apprentice.nvim', dependencies = { 'rktjmp/lush.nvim' } },
+  {
+    'craftzdog/solarized-osaka.nvim',
+    branch = 'osaka',
+    opts = function()
+      return {
+        transparent = false,
+      }
+    end,
+  },
 }
