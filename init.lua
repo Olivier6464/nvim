@@ -38,7 +38,6 @@ require('lazy').setup({
   require 'plugins.gitsigns',
   require 'plugins.database',
   require 'plugins.misc',
-  require 'plugins.harpoon',
   require 'plugins.emoji',
   require 'plugins.noice',
   require 'plugins.themes',

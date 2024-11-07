@@ -9,7 +9,7 @@ return {
       vim.g.adwaita_darker = true             -- for darker version
       vim.g.adwaita_disable_cursorline = true -- to disable cursorline
       vim.g.adwaita_transparent = false       -- makes the background transparent
-      vim.cmd 'colorscheme adwaita'
+      vim.cmd('colorscheme adwaita')
     end,
   },
   {
@@ -20,7 +20,7 @@ return {
       vim.g.aurora_bold = 1
     end,
     config = function()
-      vim.cmd.colorscheme 'aurora'
+      vim.cmd.colorscheme('aurora')
       -- override defaults
       vim.api.nvim_set_hl(0, '@number', { fg = '#e933e3' })
     end,
@@ -55,9 +55,9 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     -- Optional; default configuration will be used if setup isn't called.
     config = function()
-      require('everforest').setup {
+      require('everforest').setup({
         -- Your config here
-      }
+      })
     end,
   },
   { 'projekt0n/github-nvim-theme',  name = 'github-theme' },
@@ -105,7 +105,7 @@ return {
       local toggle_transparency = function()
         bg_transparent = not bg_transparent
         vim.g.nord_disable_background = bg_transparent
-        vim.cmd [[colorscheme nord]]
+        vim.cmd([[colorscheme nord]])
         -- set_menu_border_transparency()
       end
 
@@ -161,16 +161,16 @@ return {
         },
       }
 
-      local onedark = require 'onedark'
+      local onedark = require('onedark')
       onedark.setup(config)
       onedark.load()
 
       -- Make the background of diagnostics messages transparent
       local set_diagnostics_bg_transparency = function()
-        vim.cmd [[highlight DiagnosticVirtualTextError guibg=none]]
-        vim.cmd [[highlight DiagnosticVirtualTextWarn guibg=none]]
-        vim.cmd [[highlight DiagnosticVirtualTextInfo guibg=none]]
-        vim.cmd [[highlight DiagnosticVirtualTextHint guibg=none]]
+        vim.cmd([[highlight DiagnosticVirtualTextError guibg=none]])
+        vim.cmd([[highlight DiagnosticVirtualTextWarn guibg=none]])
+        vim.cmd([[highlight DiagnosticVirtualTextInfo guibg=none]])
+        vim.cmd([[highlight DiagnosticVirtualTextHint guibg=none]])
       end
       set_diagnostics_bg_transparency()
 
@@ -222,7 +222,7 @@ return {
       vim.g.sonokai_transparent_background = '1'
       vim.g.sonokai_enable_italic = '1'
       vim.g.sonokai_style = 'andromeda'
-      vim.cmd.colorscheme 'sonokai'
+      vim.cmd.colorscheme('sonokai')
     end,
   },
   {
@@ -232,7 +232,7 @@ return {
     },
     config = function(_, opts)
       require('tokyodark').setup(opts) -- calling setup is optional
-      vim.cmd [[colorscheme tokyodark]]
+      vim.cmd([[colorscheme tokyodark]])
     end,
   },
   {
@@ -244,4 +244,5 @@ return {
   { 'shrik3/vision.nvim' },
   { 'tpope/vim-vividchalk' },
   { 'askfiy/visual_studio_code' },
+  { 'adisen99/apprentice.nvim', dependencies = { 'rktjmp/lush.nvim' } },
 }

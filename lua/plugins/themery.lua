@@ -2,11 +2,12 @@ return {
   'zaldih/themery.nvim',
   lazy = false,
   config = function()
-    require('themery').setup {
+    require('themery').setup({
       themes = {
         'vision',
         'adwaita',
         'ayu-dark',
+        'apprentice',
         'ayu-mirage',
         'vividchalk',
         'sonokai',
@@ -34,6 +35,6 @@ return {
         'tokyonight-storm',
       },
       livePreview = true,
-    }
+    })
   end,
 }
