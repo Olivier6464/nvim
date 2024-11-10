@@ -1,5 +1,5 @@
-require('core.options') -- Load general options
-require('core.keymaps') -- Load general keymaps
+require('core.options')  -- Load general options
+require('core.keymaps')  -- Load general keymaps
 require('core.snippets') -- Custom code snippets
 
 -- Install package manager
@@ -39,6 +39,7 @@ require('lazy').setup({
   require('plugins.database'),
   require('plugins.rainbow'),
   require('plugins.misc'),
+  require('plugins.tabout'),
   require('plugins.emoji'),
   require('plugins.noice'),
   require('plugins.themes'),
@@ -76,10 +77,8 @@ local function file_exists(file)
   end
 end
 
--- Path to the session file
 local session_file = '.session.vim'
 
--- Check if the session file exists in the current directory
 if file_exists(session_file) then
   -- Source the session file
   vim.cmd('source ' .. session_file)
