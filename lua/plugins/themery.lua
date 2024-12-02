@@ -23,6 +23,7 @@ return {
         'modus_operandi',
         'modus_vivendi',
         'moonfly',
+        'nightfox',
         'onedark',
         'rose-pine-main',
         'solarized-osaka-night',

@@ -63,6 +63,7 @@ return {
   { 'projekt0n/github-nvim-theme', name = 'github-theme' },
   { 'sainnhe/gruvbox-material' },
   { 'ellisonleao/gruvbox.nvim' },
+  { 'EdenEast/nightfox.nvim' },
   { 'rebelot/kanagawa.nvim' },
   { 'miikanissi/modus-themes.nvim', priority = 1000 },
   { 'bluz71/vim-moonfly-colors', name = 'moonfly', lazy = false, priority = 1000 },
