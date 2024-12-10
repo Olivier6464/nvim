@@ -1,0 +1,29 @@
+1. Comments
+I overwrite
+ctrl / that normally shows insert mode keymap
+is équivalent to gcc
+
+2. Save Quit
+ctrl Q quit current buffer
+ctrl S save current buffer
+
+3. Telescope features
+C-k up C-j down C-l select 
+C-n C-p enter is ok
+
+<leader> <leader> search buffer
+
+<leader>
+sb search buffers
+sn search neovim
+sm search marks
+sf find files recherche un fichier dans tous les fichiers
+sw search word (grep)
+sg live_grep recherche dans tous les fichiers
+sd search diagnostics
+se search emoji
+sr search resume string in buffers files
+s/  search in open files
+/ search all occurences in current buffer
+sh search help_tags
+
