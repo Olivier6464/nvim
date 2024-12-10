@@ -25,8 +25,8 @@ return {
         mappings = {
           i = {
             ['<C-k>'] = require('telescope.actions').move_selection_previous, -- move to prev result
-            ['<C-j>'] = require('telescope.actions').move_selection_next,     -- move to next result
-            ['<C-l>'] = require('telescope.actions').select_default,          -- open file
+            ['<C-j>'] = require('telescope.actions').move_selection_next, -- move to next result
+            ['<C-l>'] = require('telescope.actions').select_default, -- open file
           },
         },
       },
@@ -34,6 +34,7 @@ return {
         find_files = {
           file_ignore_patterns = { 'node_modules', '.git', '.venv' },
           hidden = true,
+          theme = 'ivy',
         },
       },
       live_grep = {
