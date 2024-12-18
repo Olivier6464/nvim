@@ -27,3 +27,8 @@ s/  search in open files
 / search all occurences in current buffer
 sh search help_tags
 
+4. Floaterm
+<space tt> to toggle terminal
+i inside terminal to launch commandes
+<esc><esc> mode normal 
+
