@@ -37,7 +37,6 @@ require('lazy').setup({
   require('plugins.debug'),
   require('plugins.gitsigns'),
   require('plugins.database'),
-  require('plugins.rainbow'),
   require('plugins.misc'),
   require('plugins.tabout'),
   require('plugins.emoji'),
