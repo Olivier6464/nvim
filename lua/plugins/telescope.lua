@@ -1,48 +1,79 @@
-
 return {
+
   {
-    "folke/noice.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = { "MunifTanjim/nui.nvim" },
-    init = function()
-      vim.opt.lazyredraw = false
-    end,
-    opts = {
-      messages = { view = "mini", view_warn = "mini" },
-      lsp = {
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    keys = {
+      { '<leader><leader>', function() end },
+      {
+        '<leader><space>',
+        function()
+          require('telescope.builtin').buffers()
+        end,
       },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        long_message_to_split = true,
-        inc_rename = true,
-        lsp_doc_border = true,
+      {
+        '<leader>ff',
+        function()
+          require('telescope.builtin').find_files({ hidden = true })
+        end,
+        desc = 'find_files',
       },
-      routes = {
-        {
-          filter = {
-            event = "notify",
-            find = "No information available",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "msg_show",
-            any = {
-              { find = "%d+L, %d+B" },
-              { find = "; after #%d+" },
-              { find = "; before #%d+" },
-            },
-          },
-          view = "mini",
-        },
+      {
+        '<leader>fb',
+        function()
+          require('telescope.builtin').current_buffer_fuzzy_find()
+        end,
+        desc = 'current_buffer_fuzzy_find',
+      },
+      {
+        '<leader>fh',
+        function()
+          require('telescope.builtin').help_tags()
+        end,
+
+        desc = 'help_tags',
+      },
+      {
+        '<leader>ft',
+        function()
+          require('telescope.builtin').tags()
+        end,
+        desc = 'tags',
+      },
+      {
+        '<leader>fd',
+        function()
+          require('telescope.builtin').grep_string()
+        end,
+        desc = 'grep_string',
+      },
+      {
+        '<leader>fp',
+        function()
+          require('telescope.builtin').live_grep()
+        end,
+        desc = 'live_grep',
+      },
+      {
+        '<leader>fo',
+        function()
+          require('telescope.builtin').tags({ only_current_buffer = true })
+        end,
+        desc = 'tags in buffer',
+      },
+      {
+        '<leader>?',
+        function()
+          require('telescope.builtin').oldfiles()
+        end,
+        desc = 'oldfiles',
       },
     },
+  },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    cond = vim.fn.executable('make') == 1,
+    build = 'make',
   },
 }

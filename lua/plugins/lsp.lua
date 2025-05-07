@@ -28,9 +28,9 @@ return {
       lspconfig.ocamllsp.setup({})
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, {})
-      vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
-      vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, {})
-      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
+      vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { desc = 'goto definition' })
+      vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, { desc = 'goto reference' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'code action' })
     end,
   },
 }
