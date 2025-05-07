@@ -38,7 +38,6 @@ require('lazy').setup({
   require('plugins.database'),
   require('plugins.misc'),
   require('plugins.tabout'),
-  require('plugins.emoji'),
   require('plugins.noice'),
   require('plugins.themes'),
   require('plugins.themery'),
