@@ -36,13 +36,5 @@ ls.add_snippets(nil, {
       text(' = '),
       insert(2),
     }),
-    snip({
-      trig = 'greet',
-      namr = 'salutations',
-    }, {
-      insert(1, 'world'),
-      text('say hello, '),
-      dl(2, 'Hello, ' .. l(1) .. '!', {1}),
-    }),
   },
 })
