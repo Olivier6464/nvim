@@ -35,13 +35,14 @@ require('lazy').setup({
   require('plugins.lazygit'),
   require('plugins.comment'),
   require('plugins.debug'),
-  require('plugins.gitsigns'),
+  -- require('plugins.gitsigns'),
   require('plugins.database'),
   require('plugins.misc'),
   require('plugins.tabout'),
   require('plugins.noice'),
   require('plugins.themes'),
   require('plugins.themery'),
+  require('plugins.typst-preview'),
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
@@ -84,3 +85,16 @@ end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- return {
+--     "chomosuke/typst-preview.nvim",
+--     ft = "typst",
+--     version = "1.*",
+--     build = function() require "typst-preview".update() end,
+--   },
+-- require("lspconfig").typos_lsp.setup{},
+-- require("lspconfig").setup{
+--   single_file_support = true,
+--   settings = {
+--     exportPdf = "onSave",
+--   },

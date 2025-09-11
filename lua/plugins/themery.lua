@@ -31,6 +31,7 @@ return {
         'tokyodark',
         'tokyonight-moon',
         'tokyonight-storm',
+        'vague',
         'vision',
         'visual_studio_code',
         'vividchalk',

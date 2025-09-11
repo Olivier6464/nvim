@@ -243,6 +243,7 @@ return {
     opts = {},
   },
   { 'shrik3/vision.nvim' },
+  { 'vague2k/vague.nvim' },
   { 'tpope/vim-vividchalk' },
   { 'askfiy/visual_studio_code' },
   { 'adisen99/apprentice.nvim', dependencies = { 'rktjmp/lush.nvim' } },
