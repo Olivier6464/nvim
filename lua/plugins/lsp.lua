@@ -27,11 +27,13 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      local lspconfig = require('lspconfig')
-      -- local on_attach = function(client, bufnr)
-      --   -- Enable completion triggered by <c-x><c-o>
-      --   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-      -- end
+      lspconfig = require('lspconfig')
+      on_attach = function(client, bufnr)
+        local opts = { noremap = true, silent = true, buffer = bufnr }
+         
+        -- Enable completion triggered by <c-x><c-o>
+         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      end,
       lspconfig.lua_ls.setup({})
       lspconfig.ts_ls.setup({})
       lspconfig.tinymist.setup({
@@ -54,5 +56,5 @@ return {
       vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, { desc = 'goto reference' })
       vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'code action' })
     end,
-  },
+  }
 }
