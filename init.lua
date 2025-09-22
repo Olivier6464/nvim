@@ -40,6 +40,7 @@ require('lazy').setup({
   require('plugins.misc'),
   require('plugins.tabout'),
   require('plugins.noice'),
+  require('plugins.surround'),
   require('plugins.themes'),
   require('plugins.themery'),
   require('plugins.typst-preview'),

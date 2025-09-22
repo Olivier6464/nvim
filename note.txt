@@ -1,3 +1,8 @@
+A installer
+
+1. installer cmake
+2. scoop install universal-ctags
+
 1. Comments
 I overwrite
 ctrl / that normally shows insert mode keymap
@@ -32,3 +37,4 @@ sh search help_tags
 i inside terminal to launch commandes
 <esc><esc> mode normal 
 
+5. surround
