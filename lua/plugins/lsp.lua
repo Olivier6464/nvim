@@ -9,19 +9,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     lazy = false,
     config = function()
-      require('mason-lspconfig').setup({
-        ensure_intalled = {
-          'tinymist',
-          'lua_ls',
-          'ts_ls',
-          'html',
-          'cssls',
-          'emmet_ls',
-          'nimls',
-          'ocamllsp',
-          'gopls',
-        },
-      })
+      require('mason-lspconfig').setup()
     end,
   },
   {
@@ -32,7 +20,7 @@ return {
       { 'williamboman/mason-lspconfig.nvim' },
 
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim',                opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       { 'folke/neodev.nvim' },
@@ -40,12 +28,12 @@ return {
     config = function()
       lspconfig = require('lspconfig')
       on_attach =
-          function(client, bufnr)
-            local opts = { noremap = true, silent = true, buffer = bufnr }
+        function(client, bufnr)
+          local opts = { noremap = true, silent = true, buffer = bufnr }
 
-            -- Enable completion triggered by <c-x><c-o>
-            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-          end, lspconfig.ts_ls.setup({})
+          -- Enable completion triggered by <c-x><c-o>
+          vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        end, lspconfig.ts_ls.setup({})
       lspconfig.tinymist.setup({
         settings = {
           formatterMode = 'typstyle',
@@ -59,6 +47,7 @@ return {
       lspconfig.cssls.setup({})
       lspconfig.nimls.setup({})
       lspconfig.gopls.setup({})
+      lspconfig.marksman.setup({})
       lspconfig.ocamllsp.setup({})
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, {})

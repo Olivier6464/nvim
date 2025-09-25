@@ -40,6 +40,8 @@ require('lazy').setup({
   require('plugins.misc'),
   require('plugins.tabout'),
   require('plugins.noice'),
+  require('plugins.render-markdown'),
+  require('plugins.rainbow'),
   require('plugins.surround'),
   require('plugins.themes'),
   require('plugins.themery'),
