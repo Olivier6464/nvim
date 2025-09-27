@@ -101,3 +101,21 @@ end
 --   settings = {
 --     exportPdf = "onSave",
 --   },
+
+vim.api.nvim_set_hl(0, 'visual', { bg = '#90EE90', fg = '#000000', bold = true })
+-- vim.api.nvim_set_hl(0, 'TodoHigh', { bg = '#FF0000', fg = '#FFFFFF' bold = true })
+-- vim.api.nvim_set_hl(0, 'TodoMed', { bg = '#FFFF00', fg = '#000000' })
+-- vim.api.nvim_set_hl(0, 'TodoLow', { bg = '#0000FF', fg = '#FFFFFF' })
+--
+-- vim.api.nvim_create_autocmd({ BufRead, BufNewFile }, {
+--   pattern = "*",
+--   callback = function()
+--     vim.fn.matchadd('TodoHigh', 'TODO:')
+--     vim.fn.matchadd('TodoMed', 'FIXME:')
+--     vim.fn.matchadd('TodoLow', 'NOTE:')
+--   end
+-- })
+--
+-- -- TODO:
+-- -- FIXME:
+-- -- NOTE:

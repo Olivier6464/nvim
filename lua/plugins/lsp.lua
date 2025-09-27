@@ -20,20 +20,19 @@ return {
       { 'williamboman/mason-lspconfig.nvim' },
 
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',                opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       { 'folke/neodev.nvim' },
     },
     config = function()
       lspconfig = require('lspconfig')
-      on_attach =
-        function(client, bufnr)
-          local opts = { noremap = true, silent = true, buffer = bufnr }
+      on_attach = function(client, bufnr)
+        local opts = { noremap = true, silent = true, buffer = bufnr }
 
-          -- Enable completion triggered by <c-x><c-o>
-          vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-        end, lspconfig.ts_ls.setup({})
+        -- Enable completion triggered by <c-x><c-o>
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      end
       lspconfig.tinymist.setup({
         settings = {
           formatterMode = 'typstyle',
