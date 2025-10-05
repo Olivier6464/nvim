@@ -41,7 +41,18 @@ return {
         },
       })
       lspconfig.ts_ls.setup({})
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = { 'vim' },
+            },
+          },
+        },
+      })
       lspconfig.html.setup({})
+      lspconfig.clangd.setup({})
       lspconfig.emmet_ls.setup({})
       lspconfig.cssls.setup({})
       lspconfig.nimls.setup({})
@@ -57,7 +68,7 @@ return {
       -- Globally configure all LSP floating preview popups (like hover, signature help, etc)
       local open_floating_preview = vim.lsp.util.open_floating_preview
       function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-        opts = opts or {}
+        -- opts = opts or {}
         opts.border = opts.border or 'rounded' -- Set border to rounded
         return open_floating_preview(contents, syntax, opts, ...)
       end
