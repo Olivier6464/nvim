@@ -256,4 +256,7 @@ return {
       }
     end,
   },
+  {
+    'mtendekuyokwa19/stoics.nvim',
+  },
 }

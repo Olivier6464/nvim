@@ -2,7 +2,14 @@ return {
   {
     'williamboman/mason.nvim',
     config = function()
-      require('mason').setup()
+      require('mason').setup({
+        opts = {
+          ensure_installed = {
+            'clangd',
+            'clang-format',
+          },
+        },
+      })
     end,
   },
   {
@@ -51,9 +58,27 @@ return {
           },
         },
       })
-      lspconfig.html.setup({})
-      lspconfig.clangd.setup({})
+      lspconfig.clangd.setup({
+        cmd = { 'clangd', '--background-index', '--compile-commands-dir', 'D:/systemc/excersies/build' },
+        init_options = {
+          clangdFileStatus = true,
+
+          clangdSemanticHighlighting = true,
+        },
+        filetypes = { 'c', 'cpp', 'cxx', 'cc' },
+        root_dir = function()
+          vim.fn.getcwd()
+        end,
+        settings = {
+          ['clangd'] = {
+            ['compilationDatabasePath'] = 'build',
+            ['fallbackFlags'] = { '-std=c++17' },
+          },
+        },
+      })
       lspconfig.emmet_ls.setup({})
+      lspconfig.html.setup({})
+      lspconfig.ccls.setup({})
       lspconfig.cssls.setup({})
       lspconfig.nimls.setup({})
       lspconfig.gopls.setup({})

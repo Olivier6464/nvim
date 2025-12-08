@@ -122,3 +122,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Save and load session
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>fq', vim.lsp.buf.format, { desc = 'format file' })
+
+vim.keymap.set('n', '<F4>', ':CMakeGenerate<cr>', {})
+vim.keymap.set('n', '<F5>', ':CMakeBuild<cr>', {})
+vim.keymap.set('n', '<F9>', ':CMakeClose<cr>', {})
+vim.keymap.set('n', '<F8>', ':CMakeClean<cr>', {})

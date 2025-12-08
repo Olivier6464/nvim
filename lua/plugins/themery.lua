@@ -28,6 +28,7 @@ return {
         'rose-pine-main',
         'solarized-osaka-night',
         'sonokai',
+        'stoics',
         'tokyodark',
         'tokyonight-moon',
         'tokyonight-storm',
