@@ -7,6 +7,7 @@ return {
           ensure_installed = {
             'clangd',
             'clang-format',
+            'gopls',
           },
         },
       })
@@ -40,6 +41,15 @@ return {
       })
       -- lspconfig.ts_ls.setup({})
       -- nouvelle syntax
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
+            },
+          },
+        },
+      })
       vim.lsp.config('ts_ls', {
         flags = { debounce_text_changes = 300 },
       })
