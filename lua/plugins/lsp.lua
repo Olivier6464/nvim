@@ -31,32 +31,19 @@ return {
       { 'folke/neodev.nvim' },
     },
     config = function()
-      lspconfig = require('lspconfig')
-      on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true, buffer = bufnr }
-
-        -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-      end
-      lspconfig.tinymist.setup({
-        settings = {
+      vim.lsp.config('tinymist', {
+        flags = {
           formatterMode = 'typstyle',
           -- exportPdf = 'onType',
           semanticTokens = 'disable',
         },
       })
-      lspconfig.ts_ls.setup({})
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = { 'vim' },
-            },
-          },
-        },
+      -- lspconfig.ts_ls.setup({})
+      -- nouvelle syntax
+      vim.lsp.config('ts_ls', {
+        flags = { debounce_text_changes = 300 },
       })
-      lspconfig.clangd.setup({
+      vim.lsp.config('clangd', {
         cmd = { 'clangd', '--background-index', '--compile-commands-dir', 'D:/systemc/excersies/build' },
         init_options = {
           clangdFileStatus = true,
@@ -74,14 +61,14 @@ return {
           },
         },
       })
-      lspconfig.emmet_ls.setup({})
-      lspconfig.html.setup({})
-      lspconfig.ccls.setup({})
-      lspconfig.cssls.setup({})
-      lspconfig.nimls.setup({})
-      lspconfig.gopls.setup({})
-      lspconfig.marksman.setup({})
-      lspconfig.ocamllsp.setup({})
+      vim.lsp.config('emmet_ls', {})
+      vim.lsp.config('html', {})
+      vim.lsp.config('ccls', {})
+      vim.lsp.config('cssls', {})
+      vim.lsp.config('nimls', {})
+      vim.lsp.config('gopls', {})
+      vim.lsp.config('marksman', {})
+      vim.lsp.config('ocamllsp', {})
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, {})
       vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { desc = 'goto definition' })
