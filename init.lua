@@ -47,7 +47,7 @@ require('lazy').setup({
   require('plugins.themery'),
   require('plugins.typst-preview'),
   require('plugins.cmake'),
-}, {
+  
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
