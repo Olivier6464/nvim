@@ -55,9 +55,9 @@ vim.keymap.set('n', '<leader>+', '<C-a>', opts) -- increment
 vim.keymap.set('n', '<leader>-', '<C-x>', opts) -- decrement
 
 -- window management
-vim.keymap.set('n', '<leader>v', '<C-w>v', opts)      -- split window vertically
-vim.keymap.set('n', '<leader>h', '<C-w>s', opts)      -- split window horizontally
-vim.keymap.set('n', '<leader>se', '<C-w>=', opts)     -- make split windows equal width & height
+vim.keymap.set('n', '<leader>v', '<C-w>v', opts) -- split window vertically
+vim.keymap.set('n', '<leader>h', '<C-w>s', opts) -- split window horizontally
+vim.keymap.set('n', '<leader>se', '<C-w>=', opts) -- make split windows equal width & height
 vim.keymap.set('n', '<leader>xs', ':close<CR>', opts) -- close current split window
 
 -- Navigate between splits
@@ -67,12 +67,12 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
 
 -- tabs
-vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts)    -- open new tab
-vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts)  -- close current tab
-vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts)      --  go to next tab
-vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts)      --  go to previous tab
+vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts) -- open new tab
+vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts) -- close current tab
+vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
+vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
 
-vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts)   -- close buffer
+vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts) -- close buffer
 vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
 
 -- toggle line wrapping
@@ -124,7 +124,54 @@ vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = tr
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>fq', vim.lsp.buf.format, { desc = 'format file' })
 
-vim.keymap.set('n', '<F4>', ':CMakeGenerate<cr>', {})
-vim.keymap.set('n', '<F5>', ':CMakeBuild<cr>', {})
+vim.keymap.set('n', '<F5>', ':CMakeGenerate<cr>', {})
+vim.keymap.set('n', '<F7>', ':CMakeBuild<cr>', {})
 vim.keymap.set('n', '<F9>', ':CMakeClose<cr>', {})
 vim.keymap.set('n', '<F8>', ':CMakeClean<cr>', {})
+
+local function zig_build_and_run()
+  if vim.bo.filetype ~= 'zig' then
+    print('Pas un fichier Zig !')
+    return
+  end
+
+  vim.cmd('write')
+
+  -- Commande complète Windows
+  local cmd = 'zig build -Doptimize=ReleaseSafe && .\\zig-out\\bin\\Zig.exe'
+
+  -- Ouvre un split en bas et lance directement la commande
+  vim.cmd('botright split')
+  vim.cmd('terminal cmd /k"' .. cmd .. '"')
+
+  -- Passe en mode insertion automatiquement
+  vim.cmd('startinsert')
+end
+
+vim.keymap.set('n', '<F4>', zig_build_and_run, { silent = true })
+
+-- Ctrl+q pour fermer terminal
+vim.keymap.set('t', '<C-q>', [[<C-\><C-n>:close<CR>]], { silent = true })
+
+-- ===============================
+-- Zig : build & run F5 + terminal linux
+-- ===============================
+--
+-- local function zig_run()
+--   local ft = vim.bo.filetype
+--   if ft ~= 'zig' then
+--     print('Pas un fichier Zig !')
+--     return
+--   end
+--   vim.cmd('write')
+--   vim.cmd('split | terminal zig run ' .. vim.fn.expand('%'))
+-- end
+--
+-- vim.api.nvim_set_keymap('n', '<F4>', '', {
+--   noremap = true,
+--   silent = true,
+--   callback = zig_run,
+-- })
+--
+-- vim.api.nvim_set_keymap('t', '<C-q>', '<C-\\><C-n>:close<CR>', { noremap = true, silent = true })
+--

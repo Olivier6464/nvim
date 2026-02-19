@@ -25,7 +25,7 @@ return {
 
 		ls.add_snippets("all", {
 			-- trigger is `fn`, second argument to snippet-constructor are the nodes to insert into the buffer on expansion.
-			s("fn", {
+			s("fun", {
 				-- Simple static text.
 				t("//Parameters: "),
 				-- function, first parameter is the function, second the Placeholders
