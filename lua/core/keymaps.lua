@@ -129,6 +129,10 @@ vim.keymap.set('n', '<F7>', ':CMakeBuild<cr>', {})
 vim.keymap.set('n', '<F9>', ':CMakeClose<cr>', {})
 vim.keymap.set('n', '<F8>', ':CMakeClean<cr>', {})
 
+-- ===============================
+-- Zig : build & run F5 + terminal windows
+-- ===============================
+
 local function zig_build_and_run()
   if vim.bo.filetype ~= 'zig' then
     print('Pas un fichier Zig !')
