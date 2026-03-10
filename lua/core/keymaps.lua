@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- For conciseness
-local opts = { noremap = true, silent = true }
+local opts = { silent = true }
 
 -- Disable the spacebar key's default behavior in Normal and Visual modes
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -18,7 +18,7 @@ vim.keymap.set('n', 'j', "v:count == 1 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('n', '<Esc>', ':noh<CR>', opts)
 
 -- save file
-vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
+vim.keymap.set('n', '<C-s>', ':w<CR>', opts)
 
 -- select all
 vim.keymap.set('n', '<C-a>', 'gg<S-v>G', opts)
@@ -87,9 +87,8 @@ vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
 -- Move text up and down
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", opts)
 vim.keymap.set('v', 'J', ":m '>+2<CR>gv=gv", opts)
-vim.keymap.set('v', 'K', ":m '<-1<CR>gv=gv", opts)
-
 -- Keep last yanked when pasting
 vim.keymap.set('v', 'p', '"_dP', opts)
 
@@ -99,6 +98,12 @@ vim.keymap.set('n', '<leader>j', '*``cgn', opts)
 -- Explicitly yank to system clipboard (highlighted and entire row)
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
+
+-- text under line
+vim.diagnostic.config({
+	virtual_text = false,
+	virtual_lines = true,
+})
 
 -- Toggle diagnostics
 local diagnostics_active = true
@@ -142,8 +147,8 @@ local function zig_build_and_run()
   vim.cmd('write')
 
   -- Commande complète Windows
-  -- local cmd = "zig build -Doptimize=Debug && .\\zig-out\\bin\\Zig.exe"
-  local cmd = 'zig run .\\src\\main.zig'
+  local cmd = "zig build -Doptimize=Debug && .\\zig-out\\bin\\Zig.exe"
+  -- local cmd = 'zig run .\\src\\main.zig'
   -- Ouvre un split en bas et lance directement la commande
   vim.cmd('botright split')
   vim.cmd('terminal cmd /k"' .. cmd .. '"')
