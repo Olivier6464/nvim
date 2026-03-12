@@ -36,11 +36,7 @@ return {
 		end,
 	},
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{
-		"lalitmee/cobalt2.nvim",
-		dependencies = { "tjdevries/colorbuddy.nvim", tag = "v1.0.0" },
-	},
-	{ "tjdevries/colorbuddy.nvim" },
+	{ "GlennLeo/cobalt2", name = "cobalt2", priority = 1000 },
 	{
 		"kuznetsss/meadow.nvim",
 		priority = 1000,
@@ -87,7 +83,6 @@ return {
 	{ "sainnhe/gruvbox-material" },
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "EdenEast/nightfox.nvim" },
-	{ "rebelot/kanagawa.nvim" },
 	{ "miikanissi/modus-themes.nvim", priority = 1000 },
 	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 	{
@@ -198,6 +193,7 @@ return {
 		priority = 1000,
 	},
 	-- Using Lazy
+	{ "e-q/okcolors.nvim", name = "okcolors" },
 	{
 		"navarasu/onedark.nvim",
 		priority = 1000, -- make sure to load this before all the other start plugins
@@ -242,10 +238,112 @@ return {
 			end,
 		},
 	},
+{'Iron-E/nvim-highlite',
+    config = function(_, opts)
+      -- OPTIONAL: setup the plugin. See "Configuration" for information
+      require('highlite').setup {generator = {plugins = {vim = false}, syntax = false}}
+
+      -- or one of the alternate colorschemes (see the "Built-in Colorschemes" section)
+      vim.api.nvim_command 'colorscheme highlite'
+    end,
+    lazy = false,
+    priority = math.huge,
+    version = '^4.0.0',
+  },
+	{
+    "jpwol/thorn.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {}
+},
+{
+    "gmr458/vscode_modern_theme.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require("vscode_modern").setup({
+            cursorline = true,
+            transparent_background = false,
+            nvim_tree_darker = true,
+        })
+        vim.cmd.colorscheme("vscode_modern")
+    end,
+    },
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
 			theme = "wisteria",
 		},
 	},
+	{
+    "jackplus-xyz/binary.nvim",
+    opts = {
+        -- Add your configuration here
+    },
+},
+{
+  "thesimonho/kanagawa-paper.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+},
+{
+  "ricardoraposo/nightwolf.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+},
+{
+  "jwbaldwin/oscura.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    -- configuration options (see below)
+  },
+},
+{
+  "idr4n/github-monochrome.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+},
+{
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+},
+{
+    "samharju/synthweave.nvim",
+},
+-- run :colorscheme synthweave or synthweave-transparent when feeling like it
+{ 'perpetuatheme/nvim', as = 'perpetua' },
+{
+    "ViViDboarder/wombat.nvim",
+    dependencies = { { "rktjmp/lush.nvim" } },
+    opts = {
+        -- You can optionally specify the name of the ansi colors you wish to use
+        -- This defaults to nil and will use the default ansi colors for the theme
+        ansi_colors_name = nil,
+    },
+},
+{
+  "dgrco/monolith.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme("monolith")
+  end,
+},
+{ "oxfist/night-owl.nvim",
+  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  priority = 1000, -- make sure to load this before all the other start plugins
+  config = function()
+    -- load the colorscheme here
+    require("night-owl").setup()
+    vim.cmd.colorscheme("night-owl")
+  end,
+},
+{
+  "cpea2506/one_monokai.nvim",
+},
 }

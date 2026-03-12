@@ -9,7 +9,7 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    quickfile = { enabled = true },
+    -- quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     styles = {
       notification = {
@@ -20,7 +20,7 @@ return {
     picker = {
       enabled = true,
       layout = {
-        preset = "default",        
+        preset = "default",
         width = 0.8,
         height = 0.8,
       },
@@ -29,7 +29,7 @@ return {
           keys = {
             ["<Esc>"] = { "close", mode = { "n", "i" } },
           },
-          backdrop = 60, 
+          backdrop = 80, 
         },
       },
     },
