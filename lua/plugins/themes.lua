@@ -346,4 +346,38 @@ return {
 {
   "cpea2506/one_monokai.nvim",
 },
+{ "y9san9/y9nika.nvim",
+    lazy = false,
+    priority = 1000,
+  config = function()
+    -- load the colorscheme here
+    require("y9nika.core").apply {
+    background = "#0e1415",
+    foreground = "#dddddd",
+    primary = "#71ade7",
+    secondary = "#95cb82",
+    muted = "#aaaaaa",
+    marker = "#dfdf8e",
+}
+  end,
+},
+{
+  "Ferouk/bearded-nvim",
+  name = "bearded",
+  priority = 1000,
+  build = function()
+    -- Generate helptags so :h bearded-theme works
+    local doc = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy", "bearded", "doc")
+    pcall(vim.cmd, "helptags " .. doc)
+  end,
+  config = function()
+    require("bearded").setup({
+      flavor = "arc", -- any flavor slug
+    })
+    vim.cmd.colorscheme("bearded")
+  end,
+},
+{"jalvesaq/southernlights"},
+{ 'kepano/flexoki-neovim', as = 'flexoki' },
+{ "lunarvim/darkplus.nvim" },
 }
