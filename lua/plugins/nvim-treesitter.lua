@@ -1,19 +1,18 @@
--- Highlight, edit, and navigate code
 return {
   'nvim-treesitter/nvim-treesitter',
+  lazy = false,
   build = ':TSUpdate',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function()
-    require('nvim-treesitter.configs').setup({
+    require('nvim-treesitter').setup({
       -- Add languages to be installed here that you want installed for treesitter
       opts = {
 
         ensure_installed = {
           'cmake',
           'css',
-          'gitignore',
           'go',
           'gomod',
           'gosum',
@@ -23,12 +22,8 @@ return {
           'json',
           'lua',
           'markdown',
-          'php',
-          'proto',
           'rego',
-          'ruby',
           'make',
-          'marksman',
           'python',
           'regex',
           'sql',
@@ -112,9 +107,5 @@ return {
     })
 
     -- Register additional file extensions
-    vim.filetype.add({ extension = { tf = 'terraform' } })
-    vim.filetype.add({ extension = { tfvars = 'terraform' } })
-    vim.filetype.add({ extension = { pipeline = 'groovy' } })
-    vim.filetype.add({ extension = { multibranch = 'groovy' } })
   end,
 }

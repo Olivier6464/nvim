@@ -1,4 +1,4 @@
-return
+return {
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -78,19 +78,9 @@ return
 			vim.lsp.config("cssls", {})
 			vim.lsp.config("nimls", {})
 			vim.lsp.config("gopls", {})
-			vim.lsp.config("marksman", {})
-			vim.lsp.config("ocamllsp", {})
-			vim.lsp.config("zls", {
-				cmd = { "zls" },
-				filetypes = { "zig" },
-			})
+			vim.lsp.config("zls", {})
 			vim.lsp.enable("zls")
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				pattern = "*.zig",
-				callback = function()
-					vim.lsp.buf.format()
-				end,
-			})
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
 					local opts = { buffer = args.buf }
@@ -101,13 +91,6 @@ return
 					vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 				end,
 			})
-			-- vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			-- vim.keymap.set("n", "<c-k>", vim.lsp.buf.signature_help, {})
-			-- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "goto definition" })
-			-- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "goto reference" })
-			-- vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "code action" })
-
-			-- Globally configure all LSP floating preview popups (like hover, signature help, etc)
 			local open_floating_preview = vim.lsp.util.open_floating_preview
 			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 				-- opts = opts or {}
