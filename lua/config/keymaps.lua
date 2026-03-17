@@ -1,7 +1,7 @@
 -- Keymaps for better default experience
 
 -- Set leader key
-vim.g.mapleader = " "
+--:ivim.g.mapleader = ""
 vim.g.maplocalleader = " "
 
 -- For conciseness

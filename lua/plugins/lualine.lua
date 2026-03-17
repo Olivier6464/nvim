@@ -1,6 +1,6 @@
 -- Set lualine as statusline
 return {
-  'nvim-lualine/lualine.nvim',
+  'nvim-lualine/lualine.nvim', event = "VeryLazy",
   config = function()
     -- Adapted from: https://github.com/nvim-lualine/lualine.nvim/blob/master/lua/lualine/themes/onedark.lua
     local colors = {
