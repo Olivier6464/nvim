@@ -27,7 +27,6 @@ vim.opt.softtabstop = 4 -- Number of spaces that a tab counts for while performi
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.cursorline = true -- highlight the current line
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
-vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.smartindent = true -- make indenting smarter again
 vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore

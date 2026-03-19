@@ -98,15 +98,14 @@ vim.keymap.set("n", "<leader>j", "*``cgn", opts)
 -- Explicitly yank to system clipboard (highlighted and entire row)
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-
 -- text under line
-vim.diagnostic.config({
-	virtual_text = false,
-	virtual_lines = true,
-})
+-- vim.diagnostic.config({
+--	virtual_text = false,
+--	virtual_lines = true,
+--})
 
 -- Toggle diagnostics
-local diagnostics_active = true
+--local diagnostics_active = true
 
 vim.keymap.set("n", "<leader>do", function()
 	diagnostics_active = not diagnostics_active
@@ -133,6 +132,16 @@ vim.keymap.set("n", "<F6>", ":CMakeGenerate<cr>", {})
 vim.keymap.set("n", "<F8>", ":CMakeBuild<cr>", {})
 vim.keymap.set("n", "<F10>", ":CMakeClose<cr>", {})
 vim.keymap.set("n", "<F9>", ":CMakeClean<cr>", {})
+
+-- Normal mode → commenter/décommenter ligne
+vim.keymap.set("n", "<C-/>", "gcc", { remap = true, silent = true })
+
+-- Visual mode → commenter/décommenter sélection
+vim.keymap.set("v", "<C-/>", "gc", { remap = true, silent = true })
+
+-- Fallback (certains terminaux envoient Ctrl+/ comme Ctrl+_)
+vim.keymap.set("n", "<C-_>", "gcc", { remap = true, silent = true })
+vim.keymap.set("v", "<C-_>", "gc", { remap = true, silent = true })
 
 -- ===============================
 -- Zig : build & run F4 + terminal windows
@@ -212,3 +221,5 @@ vim.keymap.set("n", "<F4>", zig_build_and_run, { silent = true })
 
 -- Ctrl+q pour fermer terminal
 vim.keymap.set("t", "<C-q>", [[<C-\><C-n>:close<CR>]], { silent = true })
+
+
