@@ -292,6 +292,20 @@ return {
   lazy = false,
   priority = 1000,
   opts = {},
+  config = function ()
+    require('nightwolf').setup({
+    transparent = true, -- Boolean: Sets the background to transparent
+    italics = {
+        comments = true, -- Boolean: Italicizes comments
+        keywords = true, -- Boolean: Italicizes keywords
+        functions = true, -- Boolean: Italicizes functions
+        strings = true, -- Boolean: Italicizes strings
+        variables = true, -- Boolean: Italicizes variables
+    },
+    overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+    palette_overrides = {}
+})
+  end
 },
 {
   "jwbaldwin/oscura.nvim",
@@ -380,4 +394,47 @@ return {
 {"jalvesaq/southernlights"},
 { 'kepano/flexoki-neovim', as = 'flexoki' },
 { "lunarvim/darkplus.nvim" },
+ { "marko-cerovac/material.nvim" },
+ {"slugbyte/lackluster.nvim",
+    lazy = false,
+    priority = 1000,
+    init = function()
+        vim.cmd.colorscheme("lackluster")
+        -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
+        -- vim.cmd.colorscheme("lackluster-mint")
+    end,
+},
+{ "mellow-theme/mellow.nvim" },
+{
+  'glepnir/zephyr-nvim',
+  requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
+  { 'Everblush/nvim', name = 'everblush' },
+  {
+  "zootedb0t/citruszest.nvim",
+  lazy = false,
+  priority = 1000,
+},
+{
+  "oskarnurm/koda.nvim",
+  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  priority = 1000, -- make sure to load this before all the other start plugins
+  config = function()
+    -- require("koda").setup({ transparent = true })
+    vim.cmd("colorscheme koda")
+  end,
+},
+"shaunsingh/moonlight.nvim",
+lazy = false,
+priority = 1000,
+config = function ()
+   require('lualine').setup {
+  options = {
+    -- ... your lualine config
+    theme = 'moonlight'
+    -- ... your lualine config
+  }
 }
+end
+},
+}
+
