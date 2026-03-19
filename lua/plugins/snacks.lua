@@ -41,6 +41,7 @@ return {
     { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Fermer les autres Buffers (Only)" },
 
     -- NAVIGATION & RECHERCHE
+    --
     { "<leader><space>", function() Snacks.picker.files() end, desc = "Trouver Fichiers" },
     { "<leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "Aller à une Fonction/Symbole" },
     { "<leader>fl", function() Snacks.picker.lines() end, desc = "Chercher une Ligne" },
