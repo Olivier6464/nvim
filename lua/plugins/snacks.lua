@@ -23,7 +23,7 @@ return {
     },
     -- 2. Activation des modules nécessaires
     explorer = { enabled = true },
-    words = { enabled = true },
+    words = { enabled = false },
     notifier = { enabled = false },
     scroll = { enabled = true },
     scope = { enabled = true },
