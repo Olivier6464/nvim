@@ -1,5 +1,5 @@
 return {
-  'allaman/emoji.nvim',
+  'allaman/emoji.nvim', enable = false,
   version = '1.0.0', -- optionally pin to a tag
   ft = 'markdown, html, lua, javascript, ts', -- adjust to your needs
   dependencies = {

@@ -67,6 +67,8 @@ return {
         { section = 'startup' },
       },
     },
+    -- visualisation de gitsigns
+    statuscolumn = { enabled = true },
     -- 1. Configuration du Picker (Taille et Comportement)
     picker = {
       enabled = true,

@@ -1,6 +1,6 @@
 return {
     {
-      "folke/noice.nvim",
+      "folke/noice.nvim", enable = false,
       event = { "BufReadPost", "BufNewFile" },
       dependencies = { "MunifTanjim/nui.nvim" },
       init = function()
