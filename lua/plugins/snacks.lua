@@ -52,24 +52,59 @@ return {
       function()
         Snacks.explorer()
       end,
-      desc = 'File Explorer',
+      desc = 'Fichier SExplorer',
+    },
+    {
+      '<leader>fg',
+      function()
+        Snacks.picker.files()
+      end,
+      desc = 'Trouver SFichiers',
     },
     {
       '<leader><space>',
       function()
-        Snacks.picker.files()
+        Snacks.picker.grep()
       end,
-      desc = 'Trouver Fichiers',
+      desc = 'Trouver ds SRépertoire',
     },
-  },
-  init = function()
-    -- On ne garde que la partie cosmétique ici
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'VeryLazy',
-      callback = function()
-        vim.api.nvim_set_hl(0, 'SnacksPickerBorder', { fg = '#89b4fa' })
-        vim.api.nvim_set_hl(0, 'SnacksPickerTitle', { fg = '#fab387', bold = true })
+
+    -- Navigation LSP : Aller à la définition (Goto Definition)
+    {
+      '<leader>gd',
+      function()
+        Snacks.picker.lsp_definitions()
       end,
-    })
-  end,
+      desc = 'Aller SDéfinition',
+    },
+
+    -- Navigation LSP : Aller aux références (souvent utile avec la définition)
+    {
+      '<leader>gr',
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      desc = 'Aller SRéferences',
+      nowait = true,
+    },
+
+    -- Recherche de symboles (alternative à "find line" mais plus intelligent)
+    {
+      '<leader>gs',
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = 'Aller SSymbols',
+    },
+    init = function()
+      -- On ne garde que la partie cosmétique ici
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'VeryLazy',
+        callback = function()
+          vim.api.nvim_set_hl(0, 'SnacksPickerBorder', { fg = '#89b4fa' })
+          vim.api.nvim_set_hl(0, 'SnacksPickerTitle', { fg = '#fab387', bold = true })
+        end,
+      })
+    end,
+  },
 }

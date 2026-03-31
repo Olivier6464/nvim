@@ -23,7 +23,7 @@ return {
     require('lualine').setup({
       options = {
         icons_enabled = true,
-        theme = 'material-deep-ocean',
+        theme = 'everforest',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         globalstatus = true, -- Recommandé pour avoir une seule barre en bas
