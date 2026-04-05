@@ -64,9 +64,61 @@ return {
     {
       '<leader><space>',
       function()
+        Snacks.picker.buffers()
+      end,
+      desc = 'Buffers',
+    },
+
+    -- 2. "Buffer Only" : Ferme tous les buffers sauf celui qui est ouvert
+    {
+      '<leader>bo',
+      function()
+        Snacks.bufdelete.other()
+      end,
+      desc = 'Delete Other Buffers',
+    },
+
+    -- Bonus : fermer le buffer actuel proprement sans casser ton layout de fenêtres
+    {
+      '<leader>bd',
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = 'Delete Buffer',
+    },
+    {
+      '<leader>fc',
+      function()
+        Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
+      end,
+      desc = 'Find Config Files',
+    },
+
+    -- 2. Option pour rechercher un mot dans le FICHIER ACTUEL (comme un grep local)
+    {
+      '<leader>fl',
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = 'Buffer Lines (Search word in file)',
+    },
+
+    -- BONUS : Si tu veux rechercher un mot dans TOUT le projet (Grep)
+    {
+      '<leader>fw',
+      function()
         Snacks.picker.grep()
       end,
-      desc = 'Trouver ds SRépertoire',
+      desc = 'Find Word in Project',
+    },
+
+    -- BONUS : Pour reprendre la dernière recherche si tu as fermé la fenêtre trop vite
+    {
+      '<leader>fr',
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = 'Resume Last Picker',
     },
 
     -- Navigation LSP : Aller à la définition (Goto Definition)
