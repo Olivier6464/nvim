@@ -72,9 +72,13 @@ vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts) -- close current tab
 vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
 vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
 
-vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts) -- close buffer
-vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
+-- vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts) -- close buffer
+-- vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
+-- Appel explicite de Snacks.explorer
 
+vim.keymap.set('n', '<leader>e', function()
+  Snacks.explorer.open()
+end, { desc = 'Explorer Snacks' })
 -- toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
 

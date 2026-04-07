@@ -1,6 +1,6 @@
 return {
   'folke/snacks.nvim',
-  priority = 1000,
+  priority = 1000, -- On lui donne une priorité maximale
   lazy = false,
   opts = {
     dashboard = {
@@ -67,25 +67,30 @@ return {
         { section = 'startup' },
       },
     },
-    -- 1. Configuration du Picker (Taille et Comportement)
-    picker = {
-      enabled = true,
-      layout = {
-        preset = 'default',
-        width = 0.8,
-        height = 0.8,
-      },
-      win = {
-        input = {
-          keys = {
-            ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
-          },
-          backdrop = 60,
-        },
-      },
-    },
-    -- 2. Activation des modules nécessaires
-    explorer = { enabled = true },
+    -- -- 2. Activation des modules nécessaires
+    -- explorer = {
+    --   enabled = true,
+    --   replace_netrw = true, -- C'est cette ligne qui évite le doublon
+    -- },
+    --
+    -- -- 1. Configuration du Picker (Taille et Comportement)
+    -- picker = {
+    --   enabled = true,
+    --   layout = {
+    --     preset = 'default',
+    --     width = 0.8,
+    --     height = 0.8,
+    --   },
+    --   win = {
+    --     input = {
+    --       keys = {
+    --         ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+    --       },
+    --       backdrop = 60,
+    --     },
+    --   },
+    -- },
+
     words = { enabled = false },
     notifier = { enabled = false },
     scroll = { enabled = true },
@@ -100,11 +105,15 @@ return {
     {
       '<leader>e',
       function()
-        Snacks.explorer()
+        -- On force l'ouverture de l'explorer Snacks
+        -- Si un buffer netrw existe, on le ferme d'abord
+        if vim.bo.filetype == 'netrw' then
+          vim.cmd('bwipeout')
+        end
+        Snacks.explorer.open()
       end,
       desc = 'File Explorer',
     },
-
     -- BUFFERS (Nouveautés)
     {
       '<leader>fb',
@@ -155,6 +164,9 @@ return {
 
   -- 4. Personnalisation des Couleurs
   init = function()
+    -- CRUCIAL : Désactive Netrw AVANT que Neovim n'ait le temps de le charger
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
       callback = function()

@@ -1,3 +1,9 @@
+-- Désactivation radicale de Netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Option supplémentaire pour Nvim 0.12
+vim.opt.fillchars = { eob = ' ' } -- Optionnel : nettoie l'interface
 vim.opt.hlsearch = false -- Set highlight on search
 vim.wo.number = true -- Make line numbers default
 vim.opt.mouse = 'a' -- Enable mouse mode
