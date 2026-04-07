@@ -152,7 +152,7 @@ local function zig_build_and_run()
   vim.cmd('write')
 
   -- Commande complète Windows
-  local cmd = 'zig build -Doptimize=Debug && .\\zig-out\\bin\\Zig.exe'
+  local cmd = 'zig build  && .\\zig-out\\bin\\Zig.exe'
   -- local cmd = 'zig run .\\src\\main.zig'
   -- Ouvre un split en bas et lance directement la commande
   vim.cmd('botright split')
@@ -203,7 +203,7 @@ local function zig_build_and_run()
   vim.cmd('write')
 
   -- Commande complète Windows
-  local cmd = 'zig build -Doptimize=ReleaseSafe && .\\zig-out\\bin\\Zig.exe'
+  local cmd = 'zig build && .\\zig-out\\bin\\Zig.exe'
 
   -- Ouvre un split en bas et lance directement la commande
   vim.cmd('botright split')
