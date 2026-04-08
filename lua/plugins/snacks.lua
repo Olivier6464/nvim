@@ -67,7 +67,7 @@ return {
       desc = 'Trouver SFichiers',
     },
     {
-      '<leader><space>',
+      '<leader>fb',
       function()
         Snacks.picker.buffers()
       end,
