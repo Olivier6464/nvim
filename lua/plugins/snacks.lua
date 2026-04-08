@@ -34,39 +34,12 @@ return {
         },
       },
     },
-<<<<<<< HEAD
-    -- -- 2. Activation des modules nécessaires
-    -- explorer = {
-    --   enabled = true,
-    --   replace_netrw = true, -- C'est cette ligne qui évite le doublon
-    -- },
-    --
-    -- -- 1. Configuration du Picker (Taille et Comportement)
-    -- picker = {
-    --   enabled = true,
-    --   layout = {
-    --     preset = 'default',
-    --     width = 0.8,
-    --     height = 0.8,
-    --   },
-    --   win = {
-    --     input = {
-    --       keys = {
-    --         ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
-    --       },
-    --       backdrop = 60,
-    --     },
-    --   },
-    -- },
-
-=======
     explorer = {
       enabled = true,
       replace_netrw = true,
     },
     picker = { enabled = true },
     statuscolumn = { enabled = true },
->>>>>>> c2eabd9e60c67afe69410cb6e0cf826ebeae118a
     words = { enabled = false },
     notifier = { enabled = false },
     scroll = { enabled = true },
@@ -86,10 +59,6 @@ return {
       end,
       desc = 'Fichier SExplorer',
     },
-<<<<<<< HEAD
-    -- BUFFERS (Nouveautés)
-=======
->>>>>>> c2eabd9e60c67afe69410cb6e0cf826ebeae118a
     {
       '<leader>fg',
       function()
@@ -130,27 +99,7 @@ return {
       desc = 'Find Config Files',
     },
 
-<<<<<<< HEAD
-  -- 4. Personnalisation des Couleurs
-  init = function()
-    -- CRUCIAL : Désactive Netrw AVANT que Neovim n'ait le temps de le charger
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'VeryLazy',
-      callback = function()
-        vim.api.nvim_set_hl(0, 'SnacksPickerBorder', { fg = '#89b4fa' })
-        vim.api.nvim_set_hl(0, 'SnacksPickerTitle', { fg = '#fab387', bold = true })
-=======
-    -- 2. Option pour rechercher un mot dans le FICHIER ACTUEL (comme un grep local)
-    {
-      '<leader>fl',
-      function()
-        Snacks.picker.lines()
->>>>>>> c2eabd9e60c67afe69410cb6e0cf826ebeae118a
-      end,
-      desc = 'Buffer Lines (Search word in file)',
-    },
+    -- 4. Personnalisation des Couleurs
 
     -- BONUS : Si tu veux rechercher un mot dans TOUT le projet (Grep)
     {
