@@ -67,18 +67,18 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
 
 -- tabs
-vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts) -- open new tab
-vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts) -- close current tab
-vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
-vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
+-- vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts) -- open new tab
+-- vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts) -- close current tab
+-- vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
+-- vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
 
 -- vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts) -- close buffer
 -- vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
 -- Appel explicite de Snacks.explorer
 
-vim.keymap.set('n', '<leader>e', function()
-  Snacks.explorer.open()
-end, { desc = 'Explorer Snacks' })
+-- vim.keymap.set('n', '<leader>e', function()
+--   Snacks.explorer.open()
+-- end, { desc = 'Explorer Snacks' })
 -- toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
 
@@ -97,7 +97,7 @@ vim.keymap.set('v', 'J', ":m '>+2<CR>gv=gv", opts)
 vim.keymap.set('v', 'p', '"_dP', opts)
 
 -- Replace word under cursor
-vim.keymap.set('n', '<leader>j', '*``cgn', opts)
+-- vim.keymap.set('n', '<leader>j', '*``cgn', opts)
 
 -- Explicitly yank to system clipboard (highlighted and entire row)
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
@@ -165,7 +165,7 @@ end
 vim.keymap.set('n', '<F4>', zig_build_and_run, { silent = true })
 
 -- Ctrl+q pour fermer terminal
-vim.keymap.set('t', '<C-q>', [[<C-\><C-n>:close<CR>]], { silent = true })
+vim.keymap.set('t', '<C-c>', [[<C-\><C-n>:close<CR>]], { silent = true })
 
 -- ===============================
 -- Zig : build & run F6 + terminal linux
@@ -214,6 +214,3 @@ local function zig_build_and_run()
 end
 
 vim.keymap.set('n', '<F4>', zig_build_and_run, { silent = true })
-
--- Ctrl+q pour fermer terminal ouvert pour zig apres F4
-vim.keymap.set('t', '<C-q>', [[<C-\><C-n>:close<CR>]], { silent = true })

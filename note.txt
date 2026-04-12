@@ -39,4 +39,4 @@ i inside terminal to launch commandes
 
 5. surround
 
-
+naviguer dans les texts objects v_an et v_im
