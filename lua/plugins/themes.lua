@@ -1,5 +1,11 @@
 return {
   {
+    '0x-ximon/acario.nvim',
+    name = 'acario',
+    lazy = false,
+    priority = 1000,
+  },
+  {
     'Mofiqul/adwaita.nvim',
     lazy = false,
     priority = 1000,
@@ -20,7 +26,7 @@ return {
       vim.g.aurora_bold = 1
     end,
     config = function()
-      vim.cmd.colorscheme('aurora')
+      -- vim.cmd.colorscheme('aurora')
       -- override defaults
       vim.api.nvim_set_hl(0, '@number', { fg = '#e933e3' })
     end,
@@ -85,6 +91,7 @@ return {
     end,
   },
   { 'projekt0n/github-nvim-theme', name = 'github-theme' },
+  { 'ntk148v/habamax.nvim', dependencies = { 'rktjmp/lush.nvim' } },
   { 'sainnhe/gruvbox-material' },
   { 'ellisonleao/gruvbox.nvim' },
   { 'EdenEast/nightfox.nvim' },
@@ -154,7 +161,7 @@ return {
     },
     config = function(_, opts)
       require('tokyodark').setup(opts) -- calling setup is optional
-      vim.cmd([[colorscheme tokyodark]])
+      -- vim.cmd([[colorscheme tokyodark]])
     end,
   },
   {

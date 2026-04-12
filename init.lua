@@ -63,6 +63,6 @@ require('lazy').setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { 'tokyonight', 'habamax' } },
+  install = { colorscheme = { 'adwaita', 'tokyonight', 'habamax' } },
   checker = { enabled = true }, -- vérifie les mises à jour automatiquement
 })
