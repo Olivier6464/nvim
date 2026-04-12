@@ -98,6 +98,22 @@ return {
       end,
       desc = 'Trouver Fichiers',
     },
+    -- Use <leader>fl to find lines in the current buffer
+    {
+      '<leader>fl',
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = 'Cherche lignes',
+    },
+    -- Use <leader>fg to grep across the project
+    {
+      '<leader>fp',
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = 'Cherche projet',
+    },
     {
       '<leader>fb',
       function()

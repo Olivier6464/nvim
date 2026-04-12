@@ -20,7 +20,7 @@ return {
       harpoon:list():next()
     end)
 
-    vim.keymap.set('n', '<leader>fl', function()
+    vim.keymap.set('n', '<leader>fh', function()
       local conf = require('telescope.config').values
       local themes = require('telescope.themes')
       local file_paths = {}

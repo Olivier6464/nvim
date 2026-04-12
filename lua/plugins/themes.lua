@@ -285,7 +285,8 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     opts = {
-      theme = 'wisteria',
+      -- theme = 'wisteria',
+      theme = 'vscode_modern',
     },
   },
   {
