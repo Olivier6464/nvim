@@ -63,6 +63,8 @@ require('lazy').setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { 'adwaita', 'tokyonight', 'habamax' } },
+  install = { colorscheme = { 'onedark', 'adwaita', 'tokyonight' } },
   checker = { enabled = true }, -- vérifie les mises à jour automatiquement
 })
+
+vim.cmd.colorscheme('ayu')

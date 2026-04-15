@@ -9,6 +9,8 @@ return {
             'clang-format',
             'gopls',
             'zls',
+            'oxlint',
+            'oxfmt',
           },
         },
       })
