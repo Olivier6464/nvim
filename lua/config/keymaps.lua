@@ -47,8 +47,8 @@ vim.keymap.set('n', '<Left>', ':vertical resize -1<CR>', opts)
 vim.keymap.set('n', '<Right>', ':vertical resize +3<CR>', opts)
 
 -- Navigate buffers
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
+vim.keymap.set('n', '<Right>', ':bnext<CR>', opts)
+vim.keymap.set('n', '<Left>', ':bprevious<CR>', opts)
 
 -- increment/decrement numbers
 vim.keymap.set('n', '<leader>+', '<C-a>', opts) -- increment

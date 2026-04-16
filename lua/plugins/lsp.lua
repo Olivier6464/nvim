@@ -1,65 +1,43 @@
 return {
   {
-    'mason-org/mason.nvim',
-    config = function()
-      require('mason').setup({
-        opts = {
-          ensure_installed = {
-            'clangd',
-            'clang-format',
-            'gopls',
-            'zls',
-            'oxlint',
-            'oxfmt',
-          },
-        },
-      })
-    end,
-  },
-  {
-    'mason-org/mason-lspconfig.nvim',
-    lazy = false,
-    config = function()
-      require('mason-lspconfig').setup()
-    end,
+    'saghen/blink.cmp',
+    lazy = false, -- Blink doit être chargé pour injecter les capacités
+    version = 'v0.*',
+    opts = {
+      keymap = { preset = 'default' },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+    },
   },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- LSP Manager Plugins
+      'saghen/blink.cmp', -- On ajoute blink ici
       { 'mason-org/mason.nvim' },
       { 'mason-org/mason-lspconfig.nvim' },
-
-      -- Useful status updates for LSP
-      -- Additional lua configuration, makes nvim stuff amazing!
       { 'folke/neodev.nvim' },
     },
     config = function()
-      -- 1. On récupère les capacités pour nvim-cmp
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- local has_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-      -- if has_cmp then
-      --   capabilities = cmp_lsp.default_capabilities(capabilities)
-      -- end
-      --
-      -- 2. Configuration des serveurs avec options spécifiques
+      -- 1. On récupère les capacités via Blink
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+      -- 2. Configuration des serveurs
+      -- Note : Sur Neovim 0.11+, tu peux passer les capabilities globalement
+      -- ou par serveur via vim.lsp.config
+
       vim.lsp.config('tinymist', {
-        -- capabilities = capabilities,
+        capabilities = capabilities,
         flags = { formatterMode = 'typstyle', semanticTokens = 'disable' },
       })
 
       vim.lsp.config('lua_ls', {
-        -- capabilities = capabilities,
+        capabilities = capabilities,
         settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
       })
 
-      vim.lsp.config('ts_ls', {
-        -- capabilities = capabilities,
-        flags = { debounce_text_changes = 300 },
-      })
-
       vim.lsp.config('clangd', {
-        -- capabilities = capabilities,
+        capabilities = capabilities,
         cmd = { 'clangd', '--background-index', '--compile-commands-dir', 'D:/systemc/excersies/build' },
         init_options = { clangdFileStatus = true, clangdSemanticHighlighting = true },
         filetypes = { 'c', 'cpp', 'cxx', 'cc' },
@@ -74,27 +52,14 @@ return {
         },
       })
 
-      -- 3. Configuration gr    -- local servers = { 'emmet_ls', 'html', 'ccls', 'cssls', 'nimls', 'gopls' }
-      -- for _, lsp in ipairs(servers) do
-      --   vim.lsp.config(lsp, { capabilities = capabilities })
-      -- end
+      -- ZLS et autres
+      vim.lsp.config('zls', { capabilities = capabilities })
 
-      -- Cas particulier de ZLS
-      -- vim.lsp.config('zls', { capabilities = capabilities })
-      vim.lsp.config('zls')
-      vim.lsp.enable('zls') -- Nécessaire sur NVIM 0.11+
-
-      -- 4. Autocmd pour les keymaps
-      -- vim.api.nvim_create_autocmd('LspAttach', {
-      --   callback = function(args)
-      --     local opts = { buffer = args.buf }
-      --     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-      --     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-      --     vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, opts)
-      --     vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
-      --     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-      --   end,
-      -- })
+      -- N'oublie pas d'activer tes serveurs s'ils ne le sont pas via mason-lspconfig
+      vim.lsp.enable('zls')
+      vim.lsp.enable('clangd')
+      vim.lsp.enable('lua_ls')
+      vim.lsp.enable('tinymist')
     end,
   },
 }
