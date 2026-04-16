@@ -35,37 +35,36 @@ return {
       { 'folke/neodev.nvim' },
     },
     config = function()
+      -- 1. On récupère les capacités pour nvim-cmp
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- local has_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+      -- if has_cmp then
+      --   capabilities = cmp_lsp.default_capabilities(capabilities)
+      -- end
+      --
+      -- 2. Configuration des serveurs avec options spécifiques
       vim.lsp.config('tinymist', {
-        flags = {
-          formatterMode = 'typstyle',
-          -- exportPdf = 'onType',
-          semanticTokens = 'disable',
-        },
+        -- capabilities = capabilities,
+        flags = { formatterMode = 'typstyle', semanticTokens = 'disable' },
       })
-      -- lspconfig.ts_ls.setup({})
-      -- nouvelle syntax
+
       vim.lsp.config('lua_ls', {
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' },
-            },
-          },
-        },
+        -- capabilities = capabilities,
+        settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
       })
+
       vim.lsp.config('ts_ls', {
+        -- capabilities = capabilities,
         flags = { debounce_text_changes = 300 },
       })
-      vim.lsp.config('clangd', {
-        cmd = { 'clangd', '--background-index', '--compile-commands-dir', 'D:/systemc/excersies/build' },
-        init_options = {
-          clangdFileStatus = true,
 
-          clangdSemanticHighlighting = true,
-        },
+      vim.lsp.config('clangd', {
+        -- capabilities = capabilities,
+        cmd = { 'clangd', '--background-index', '--compile-commands-dir', 'D:/systemc/excersies/build' },
+        init_options = { clangdFileStatus = true, clangdSemanticHighlighting = true },
         filetypes = { 'c', 'cpp', 'cxx', 'cc' },
         root_dir = function()
-          vim.fn.getcwd()
+          return vim.fn.getcwd()
         end,
         settings = {
           ['clangd'] = {
@@ -74,31 +73,28 @@ return {
           },
         },
       })
-      vim.lsp.config('emmet_ls', {})
-      vim.lsp.config('html', {})
-      vim.lsp.config('ccls', {})
-      vim.lsp.config('cssls', {})
-      vim.lsp.config('nimls', {})
-      vim.lsp.config('gopls', {})
-      vim.lsp.config('zls', {})
-      vim.lsp.enable('zls')
 
-      vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(args)
-          local opts = { buffer = args.buf }
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts) -- Go to definition
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- Hover info
-          vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, opts)
-          vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
-          vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-        end,
-      })
-      local open_floating_preview = vim.lsp.util.open_floating_preview
-      function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-        -- opts = opts or {}
-        opts.border = opts.border or 'rounded' -- Set border to rounded
-        return open_floating_preview(contents, syntax, opts, ...)
-      end
+      -- 3. Configuration gr    -- local servers = { 'emmet_ls', 'html', 'ccls', 'cssls', 'nimls', 'gopls' }
+      -- for _, lsp in ipairs(servers) do
+      --   vim.lsp.config(lsp, { capabilities = capabilities })
+      -- end
+
+      -- Cas particulier de ZLS
+      -- vim.lsp.config('zls', { capabilities = capabilities })
+      vim.lsp.config('zls')
+      vim.lsp.enable('zls') -- Nécessaire sur NVIM 0.11+
+
+      -- 4. Autocmd pour les keymaps
+      -- vim.api.nvim_create_autocmd('LspAttach', {
+      --   callback = function(args)
+      --     local opts = { buffer = args.buf }
+      --     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+      --     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+      --     vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, opts)
+      --     vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
+      --     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+      --   end,
+      -- })
     end,
   },
 }
